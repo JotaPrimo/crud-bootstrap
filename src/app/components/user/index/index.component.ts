@@ -6,6 +6,7 @@ import { SearchComponent } from '../search/search.component';
 import { CardHeaderComponent } from '../../layout/card/card-header/card-header.component';
 import { CardBodyComponent } from '../../layout/card/card-body/card-body.component';
 import { CardFooterComponent } from '../../layout/card/card-footer/card-footer.component';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'user-index',
@@ -17,7 +18,7 @@ import { CardFooterComponent } from '../../layout/card/card-footer/card-footer.c
 })
 export class IndexComponent implements OnInit {
   
-  users: any[] | undefined;
+  users: User[] | undefined;
 
   constructor(private userServiceService: UserServiceService) {}
   
