@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,10 @@ import { EditComponent } from '../../components/user/edit/edit.component';
   declarations: [IndexComponent, CreateComponent, EditComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
-  ]
+    UserRoutingModule,
+    HttpClientModule,
+    HttpClient        
+  ],
+  providers: [ HttpClientModule ]
 })
 export class UserModule { }

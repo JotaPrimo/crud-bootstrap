@@ -1,7 +1,8 @@
 export interface User {
     id: number,
-    nome: string,
-    email: string,
+    name: string,
     cpf: string,
-    telefone: string,
+    email: string,
+    ativo: boolean,
+    created_at: string,
 }

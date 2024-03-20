@@ -23,7 +23,10 @@ export class IndexComponent implements OnInit {
   constructor(private userServiceService: UserServiceService) {}
   
  ngOnInit(): void {
-  this.users = this.userServiceService.getUsers();    
+    this.userServiceService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+      console.log(this.users);      
+    });
  }
 
 }
