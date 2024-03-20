@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { UserServiceService } from './../../../services/user-service.service';
+import { Component, OnInit } from '@angular/core';
 
 // components
 import { SearchComponent } from '../search/search.component';
@@ -14,6 +15,14 @@ import { CardFooterComponent } from '../../layout/card/card-footer/card-footer.c
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+  
+  users: any[] | undefined;
+
+  constructor(private userServiceService: UserServiceService) {}
+  
+ ngOnInit(): void {
+  this.users = this.userServiceService.getUsers();    
+ }
 
 }
