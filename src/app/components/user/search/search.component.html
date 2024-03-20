@@ -1,34 +1,36 @@
-<div class="card">
-    <card-header>
-       <div class="d-flex justify-content-between">
-        Formulário de busca usuários
-        <a class="btn btn-sm btn-primary" [routerLink]="['user/create']" >Novo</a>
-       </div>
-    </card-header>
-
-    <card-body>
-        <form action="" method="post">
-            <div class="row">
-                <div class="col-md-3 col-sm-12 mb-4">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                </div>
-                <div class="col-md-3 col-sm-12 mb-4">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                </div>
-                <div class="col-md-3 col-sm-12 mb-4">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                </div>
-                <div class="col-md-3 col-sm-12 mb-4">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                </div>
-            </div>
-            <div class="mt">
-                <button class="btn btn-sm btn-primary">Buscar</button>
-            </div>
-        </form>
-    </card-body>
+<div class="container">
+    <div class="card">
+        <card-header>
+           <div class="d-flex justify-content-between">
+            Formulário de busca usuários
+            <a class="btn btn-sm btn-primary" [routerLink]="['/user/create']" >Novo</a>
+           </div>
+        </card-header>
     
-    <card-footer>
-        Formulário de busca usuários
-    </card-footer>
+        <card-body>
+            <form action="" method="post">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 mb-4">
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-4">
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-4">
+                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-4">
+                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    </div>
+                </div>
+                <div class="mt">
+                    <button class="btn btn-sm btn-primary">Buscar</button>
+                </div>
+            </form>
+        </card-body>
+        
+        <card-footer>
+            Formulário de busca usuários
+        </card-footer>
+    </div>
 </div>
