@@ -14,7 +14,7 @@ import { EditComponent } from '../../components/user/edit/edit.component';
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
-    HttpClient        
+    HttpClient,        
   ],
   providers: [ HttpClientModule ]
 })

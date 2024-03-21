@@ -8,7 +8,7 @@ export class MessageService {
   constructor() {}
 
   getToast() {
-    const Toast = Swal.mixin({
+    return Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
@@ -19,7 +19,6 @@ export class MessageService {
         toast.onmouseleave = Swal.resumeTimer;
       },
     });
-    return Toast;
   }
 
   async confirm(title: string, text: string) {
@@ -38,7 +37,7 @@ export class MessageService {
   success(text: string) {
     this.getToast().fire({
       icon: 'success',
-      title: 'Signed in successfully',
+      title: text,
     });
   }
 
@@ -55,4 +54,5 @@ export class MessageService {
       title: text,
     });
   }
+
 }

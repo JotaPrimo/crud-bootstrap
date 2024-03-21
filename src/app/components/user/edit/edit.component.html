@@ -1,26 +1,68 @@
 <div class="container">
     <div class="card">
         <card-header>
-            Editar usuário
+            Editar usuário : {{ user?.name }}
         </card-header>
         <card-body>
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            <form class="row g-3 needs-validation" [formGroup]="userEditForm">
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" [(ngModel)]="user && user.name" class="form-control" placeholder="Name" id="name"
+                        formControlName="name">
+                    <div [ngClass]="" class="text-danger"
+                        *ngIf="userEditForm.controls['name'].invalid && (userEditForm.controls['name'].touched || userEditForm.controls['name'].dirty)">
+                        <span *ngIf="userEditForm.controls['name'].errors?.['required']">Este campo é obrigatório</span>
+                        <span *ngIf="userEditForm.controls['name'].errors?.['minlength']">Deve ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userEditForm.controls['name'].errors?.['maxlength']">Deve ter no máximo 5
+                            caracteres</span>
                     </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                    </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                    </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    <div class="text-success"
+                        *ngIf="userEditForm.controls['name'].valid && (userEditForm.controls['name'].touched || userEditForm.controls['name'].dirty)">
+                        Muito bem!
                     </div>
                 </div>
-                <div class="mt">
-                    <button class="btn btn-sm btn-primary">Salvar</button>
+                <div class="col-md-4">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" [(ngModel)]="user && user.cpf" class="form-control" placeholder="CPF" id="cpf"
+                        formControlName="cpf">
+                    <div class="text-danger"
+                        *ngIf="userEditForm.controls['cpf'].invalid && (userEditForm.controls['cpf'].touched || userEditForm.controls['cpf'].dirty)">
+                        <span *ngIf="userEditForm.controls['cpf'].errors?.['required']">CPF campo é obrigatório</span>
+                        <span *ngIf="userEditForm.controls['cpf'].errors?.['minlength']">CPF ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userEditForm.controls['cpf'].errors?.['maxlength']">CPF ter no máximo 5
+                            caracteres</span>
+                    </div>
+                    <div class="text-success"
+                        *ngIf="userEditForm.controls['cpf'].valid && (userEditForm.controls['cpf'].touched || userEditForm.controls['cpf'].dirty)">
+                        Muito bem!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="cpf" class="form-label">Email</label>
+                    <input type="email" [(ngModel)]="user && user.email" class="form-control" id="email"
+                        placeholder="E-mail" formControlName="email">
+                    <div class="text-danger"
+                        *ngIf="userEditForm.controls['email'].invalid && (userEditForm.controls['email'].touched || userEditForm.controls['email'].dirty)">
+                        <span *ngIf="userEditForm.controls['email'].errors?.['required']">E-mail campo é
+                            obrigatório</span>
+                        <span *ngIf="userEditForm.controls['email'].errors?.['minlength']">E-mail ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userEditForm.controls['email'].errors?.['maxlength']">E-mail ter no máximo 5
+                            caracteres</span>
+                    </div>
+                    <div class="text-success"
+                        *ngIf="userEditForm.controls['email'].valid && (userEditForm.controls['email'].touched || userEditForm.controls['email'].dirty)">
+                        Muito bem!
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex gap-1">
+                        <button class="btn btn-primary btn-sm" (click)="update()" [disabled]="userEditForm.invalid"
+                            type="submit">Atualizar</button>
+                        <button-voltar link="user/index" />
+                    </div>
                 </div>
             </form>
         </card-body>

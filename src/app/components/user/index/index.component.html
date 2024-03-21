@@ -11,7 +11,7 @@
             <th scope="col">Nome</th>
             <th scope="col">CPF</th>
             <th scope="col">Email</th>
-            <th scope="col">Criado Em</th>
+            <th scope="col">Ativo</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
@@ -22,10 +22,14 @@
              <td>{{ user.name ?? '' }}</td>
             <td>{{ user.cpf }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.created_at }}</td>
+            <td>              
+              <span [ngClass]="{'badge text-bg-primary' : user.ativo, 'badge text-bg-secondary' : !user.ativo}">
+                {{ user.ativo ? 'SIM' : 'NÂO' }}
+              </span>
+            </td>
             <td class="d-flex gap-2">
-              <a class="btn btn-sm btn-warning">Editar</a>
-              <button class="btn btn-sm btn-danger">Deletar</button>
+              <a [routerLink]="['/user/edit', user.id]" class="btn btn-sm btn-warning">Editar</a>
+              <button class="btn btn-sm btn-danger" title="Deletar registro" id="btnDeletar" (click)="delete(user.id)">Deletar</button>
             </td>
           </tr>
           } @empty {
