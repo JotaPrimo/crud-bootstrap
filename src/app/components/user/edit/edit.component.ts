@@ -54,8 +54,8 @@ export class EditComponent implements OnInit {
       ]),
       cpf: new FormControl('', [
         Validators.required,
-        Validators.minLength(11),
-        Validators.maxLength(11),
+        Validators.minLength(14),
+        Validators.maxLength(14),
       ]),
       email: new FormControl('', [
         Validators.required,
