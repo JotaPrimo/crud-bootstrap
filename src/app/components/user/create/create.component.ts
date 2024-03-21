@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { UserServiceService } from '../../../services/user-service.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -34,12 +35,20 @@ export class CreateComponent {
   }
 
   store() {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    });
+    /* 
     this.userService
     .store(this.userForm.value)
     .subscribe(res => {
       console.log("user salvo com sucesso");
       this.router.navigateByUrl('user/index');
     });
+    */
   }
 
 
