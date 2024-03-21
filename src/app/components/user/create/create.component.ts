@@ -8,6 +8,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { UserServiceService } from '../../../services/user-service.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { MessageService } from '../../../services/message.service';
 
 @Component({
   selector: 'app-create',
@@ -24,7 +26,8 @@ export class CreateComponent {
 
   constructor(
     private userService: UserServiceService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
     ) {
     this.userForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
@@ -33,13 +36,23 @@ export class CreateComponent {
     });
   }
 
-  store() {
+  async store() {
+    let result = await this.messageService.confirm("Atenção", "Salvar alterações ?");
+
+    if(result.isConfirmed) {
+      this.messageService.success("Registro cadastrado com sucesso");
+      return;
+    }
+
+    this.messageService.info("Operação cancelada");
+    /* 
     this.userService
     .store(this.userForm.value)
     .subscribe(res => {
       console.log("user salvo com sucesso");
       this.router.navigateByUrl('user/index');
     });
+    */
   }
 
 
