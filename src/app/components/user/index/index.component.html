@@ -1,41 +1,43 @@
 <user-search />
 
-<div class="card mt-5">
-    <card-header>
-        Listagem de usuários
-    </card-header>
+<div class="container">
+  <div class="card mt-5">
+    <card-header> Listagem de usuários </card-header>
     <card-body>
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>twitter</td>
-              </tr>
-            </tbody>
-          </table>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Email</th>
+            <th scope="col">Criado Em</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track $index) {
+          <tr>
+            <th scope="row">{{ user.id }}</th>
+             <td>{{ user.name ?? '' }}</td>
+            <td>{{ user.cpf }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.created_at }}</td>
+            <td class="d-flex gap-2">
+              <a class="btn btn-sm btn-warning">Editar</a>
+              <button class="btn btn-sm btn-danger">Deletar</button>
+            </td>
+          </tr>
+          } @empty {
+          <tr>
+            <td colspan="4">Sem registros para exibir</td>
+          </tr>
+          }
+        </tbody>
+      </table>
     </card-body>
     <card-footer>
-        <p>alguma coisa</p>
+      <p>alguma coisa</p>
     </card-footer>
+  </div>
 </div>

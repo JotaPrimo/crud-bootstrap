@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 
 // components
@@ -12,10 +12,9 @@ import { FooterComponent } from './components/layout/footer/footer.component';
   selector: 'app-root',
   standalone: true,
   imports: [
-      RouterOutlet, NavbarComponent, FooterComponent, IndexComponent, 
+      RouterOutlet, RouterLink, NavbarComponent, FooterComponent, IndexComponent
     ],
-  templateUrl: './app.component.html',
-  template: `<router-outlet />`,
+  templateUrl: './app.component.html', 
   styleUrl: './app.component.css'
 })
 export class AppComponent {
