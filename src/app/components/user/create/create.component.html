@@ -4,23 +4,57 @@
             Novo usuário
         </card-header>
         <card-body>
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+            <form class="row g-3 needs-validation" [formGroup]="userForm">
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Name" id="name" formControlName="name">
+                    <div [ngClass]="" class="text-danger"
+                        *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].touched || userForm.controls['name'].dirty)">
+                        <span *ngIf="userForm.controls['name'].errors?.['required']">Este campo é obrigatório</span>
+                        <span *ngIf="userForm.controls['name'].errors?.['minlength']">Deve ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userForm.controls['name'].errors?.['maxlength']">Deve ter no máximo 5
+                            caracteres</span>
                     </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                    </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-                    </div>
-                    <div class="col-md-3 col-sm-12 mb-4">
-                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    <div class="text-success"
+                        *ngIf="userForm.controls['name'].valid && (userForm.controls['name'].touched || userForm.controls['name'].dirty)">
+                        Muito bem!
                     </div>
                 </div>
-                <div class="mt">
-                    <button class="btn btn-sm btn-primary">Salvar</button>
+                <div class="col-md-4">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input type="text" class="form-control" placeholder="CPF" id="cpf" formControlName="cpf">
+                    <div class="text-danger"
+                        *ngIf="userForm.controls['cpf'].invalid && (userForm.controls['cpf'].touched || userForm.controls['cpf'].dirty)">
+                        <span *ngIf="userForm.controls['cpf'].errors?.['required']">CPF campo é obrigatório</span>
+                        <span *ngIf="userForm.controls['cpf'].errors?.['minlength']">CPF ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userForm.controls['cpf'].errors?.['maxlength']">CPF ter no máximo 5
+                            caracteres</span>
+                    </div>
+                    <div class="text-success"
+                        *ngIf="userForm.controls['cpf'].valid && (userForm.controls['cpf'].touched || userForm.controls['cpf'].dirty)">
+                        Muito bem!
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="cpf" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email">
+                    <div class="text-danger"
+                        *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].touched || userForm.controls['email'].dirty)">
+                        <span *ngIf="userForm.controls['email'].errors?.['required']">E-mail campo é obrigatório</span>
+                        <span *ngIf="userForm.controls['email'].errors?.['minlength']">E-mail ter ao menos 5
+                            caracteres</span>
+                        <span *ngIf="userForm.controls['email'].errors?.['maxlength']">E-mail ter no máximo 5
+                            caracteres</span>
+                    </div>
+                    <div class="text-success"
+                        *ngIf="userForm.controls['email'].valid && (userForm.controls['email'].touched || userForm.controls['email'].dirty)">
+                        Muito bem!
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" [disabled]="userForm.invalid" type="submit">Salvar</button>
                 </div>
             </form>
         </card-body>
