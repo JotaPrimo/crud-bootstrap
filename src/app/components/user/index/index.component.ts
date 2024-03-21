@@ -10,6 +10,8 @@ import { User } from '../../../interfaces/user';
 import { CommonModule } from '@angular/common';
 import { MessageService } from '../../../services/message.service';
 import { RouterLink } from '@angular/router';
+import { UserFiltroPipe } from '../../../pipes/user-filtro.pipe';
+
 
 @Component({
   selector: 'user-index',
@@ -20,13 +22,15 @@ import { RouterLink } from '@angular/router';
     CardFooterComponent,
     CardHeaderComponent,
     CommonModule,
-    RouterLink
+    RouterLink,
+    UserFiltroPipe    
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css',
 })
 export class IndexComponent implements OnInit {
   users: User[] | undefined;
+  searchData = { nome: '', cpf: '', email: '' };
 
   constructor(
     private userServiceService: UserServiceService,
@@ -66,4 +70,9 @@ export class IndexComponent implements OnInit {
       return;
     }
   }
+
+  performSearch(searchData: any) {   
+    this.searchData = searchData;   
+  }  
+
 }
