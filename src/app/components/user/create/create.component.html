@@ -2,7 +2,7 @@
     <div class="card">
         <card-header>
             Novo usuário
-            <button class="btn btn-sm btn-primary" (click)="store()">Alert</button>
+            <button class="btn btn-sm btn-primary">Alert</button>
         </card-header>
         <card-body>
             <form class="row g-3 needs-validation" [formGroup]="userForm">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <button class="btn btn-primary" [disabled]="userForm.invalid" type="submit">Salvar</button>
+                    <button class="btn btn-primary" (click)="store()" [disabled]="userForm.invalid" type="submit">Salvar</button>
                 </div>
             </form>
         </card-body>

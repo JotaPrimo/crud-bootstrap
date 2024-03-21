@@ -30,9 +30,27 @@ export class UserServiceService {
       .pipe(catchError(this.errorHandler));
   }
 
+  find(id: number): Observable<User> {
+    return this.httpClient
+      .get<User>(ApiPath.USERS + '/' + id)
+      .pipe(catchError(this.errorHandler));
+  }
+
   store(user: User): Observable<User> {
     return this.httpClient
       .post<User>(ApiPath.USERS, JSON.stringify(user), httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  update(id: number, user: User): Observable<User> {
+    return this.httpClient
+      .put<User>(ApiPath.USERS + '/' + id, JSON.stringify(user), httpOptions)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  delete(id: number) {
+    return this.httpClient
+      .delete<User>(ApiPath.USERS + '/' + id, httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
